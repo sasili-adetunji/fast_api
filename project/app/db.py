@@ -1,5 +1,5 @@
-import os
 import logging
+import os
 
 from fastapi import FastAPI
 from tortoise import Tortoise, run_async
@@ -26,6 +26,7 @@ def init_db(app: FastAPI) -> None:
         generate_schemas=False,
         add_exception_handlers=True,
     )
+
 
 async def generate_schema() -> None:
     log.info("Initializing Tortoise...")
