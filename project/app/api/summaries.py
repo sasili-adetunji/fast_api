@@ -27,14 +27,6 @@ async def create_summary(
     return response_object
 
 
-@router.post("/", response_model=SummaryResponseSchema, status_code=201)
-async def create_summary(payload: SummaryPayloadSchema) -> SummaryResponseSchema:
-    summary_id = await crud.post(payload)
-
-    response_object = {"id": summary_id, "url": payload.url}
-    return response_object
-
-
 @router.get("/{id}/", response_model=SummarySchema)
 async def read_summary(id: int = Path(..., gt=0)) -> SummarySchema:
     summary = await crud.get(id)
